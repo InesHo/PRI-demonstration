@@ -1,0 +1,166 @@
+---
+title: "Data analysis with PRI - Pattern Recognition with Immune cells"
+author: "Yen Hoang & Ines Hoppe"
+date: "11/30/2021"
+output: 
+  html_document:
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data description
+
+The dataset can be downloaded from [Cytobank](https://www.cytobank.org/nolanlab/reports/Spitzer2017.html). Our study used 13 blood sample  files that are part of the dataset. Each sample has 41 measured protein markers and other device parameters resulting in 59 parameters for each samples' meta data in total. Compensation, elimination of doublets and dead cells was done in [FlowJo](http://flowjo.com), as well as gating on CD4+ T cells.For comparability of the re-analysis results with the original results we used a gating strategy similar to the strategy in [Spitzer et. al., 2017](https://www.sciencedirect.com/science/article/pii/S009286741631738X?via%3Dihub). The full gating strategy is presented in the supplements (reference).  
+
+## Example analysis with PRI - Pattern Recognition with Immune cells
+
+We have selected two files to demonstrate how we create binplots using the PRI approach. If the functions are to be used for other marker combinations or data sets, only the input parameters have to be adjusted accordingly and carefully.
+
+### Load libraries
+
+We operated on [R version 3.6.1](http://www.r-project.org) running under Windows 10 (64-bit). The Library ‘flowCore’ v1.52.1 was installed via [BioConductor](https://www.bioconductor.org/packages/release/bioc/html/flowCore.html) to read the FCS-files. Help and plot functions use R core functionalities are accumulated in ‘YH_binplot_functions.R’. Change the path to this script according to your folder structure.
+
+
+```{r library}
+rm(list = ls())
+fcs = new.env()
+library(flowCore)
+source("/Users/ines/Documents/DRFZ/Front_Immu/Sourcecode/YH_binplot_functions.R")
+#source("H:/Frontiers_Immunology/Sourcecode/YH_binplot_functions.R")
+```
+
+
+### Data import 
+
+The files used in this demonstration represent blood cells taken on day three of the experiment. "CD4_TIN_BLD1_Untreated_Day3.fcs" is an untreated sample and has 44083 cells after preprocession (did we preprocess these?). As effectivly treated sample we use the file "CD4_TIN_BLD2_B6Antibodies_Day3.fcs". It has 22679 cells after preprocession.
+
+Cells were transformed with inverse hyperbolic sine (asinh), which is a common transformation method for flow cytometry data ([Finak et. al., 2010](https://link.springer.com/article/10.1186/1471-2105-11-546)) Change the file-paths according to your folder structure.
+
+```{r dataimport}
+#path.folder <- file.path("H:", "Frontiers_Immunology")
+path.folder <- file.path("/Users/ines/Documents/DRFZ/Front_Immu")
+file.untr <- "CD4_TIN_BLD1_Untreated_Day3.fcs"
+
+####### UNTREATED SAMPLE - used for binplot with 3 parameters
+# read the alias vs channel mapping from keyword() option
+data.untr <- read.FCS(file=file.path(path.folder,file.untr),which.lines=1)
+keys.untr <- keyword(data.untr)
+aliases <- unlist(keyword(data.untr, c("$P5S","$P10S","$P28S","$P29S","$P33S")))
+channels <- unlist(keyword(data.untr,c("$P5N","$P10N","$P28N","$P29N","$P33N")))
+map.untr <- data.frame(alias = aliases, channels = channels)
+
+# load data
+exprs.untr <- as.data.frame(exprs(read.FCS(file=file.path(path.folder,file.untr),
+                                        channel_alias = map.untr, transformation=NULL)))
+# rename column names for channels we are interested in
+for ( i in 1:ncol(exprs.untr)) {
+  colnames(exprs.untr)[i] = strsplit(colnames(exprs.untr)[i]," ")[[1]][1]
+}
+# transform data with asinh()
+exprs.untr <- asinh(exprs.untr)
+
+####### UNTREATED SAMPLE - used for binplot with 3 parameters
+file.b6ab <- "CD4_TIN_BLD2_B6Antibodies_Day3.fcs"
+data.b6ab <- read.FCS(file=file.path(path.folder,file.b6ab),which.lines=1)
+keys.b6ab <- keyword(data.b6ab)
+aliases.b6ab <- unlist(keyword(data.b6ab,c("$P5S","$P10S","$P28S","$P29S","$P33S")))
+channels.b6ab <- unlist(keyword(data.b6ab,c("$P5N","$P10N","$P28N","$P29N","$P33N")))
+map.b6ab <- data.frame(alias = aliases.b6ab, channels = channels.b6ab)
+
+# load data
+exprs.b6ab <- as.data.frame(exprs(read.FCS(file=file.path(path.folder,file.b6ab),
+                                         channel_alias = map.b6ab, transformation=NULL)))
+# rename column names for channels we are interested in 
+for ( i in 1:ncol(exprs.b6ab)) {
+  colnames(exprs.b6ab)[i] = strsplit(colnames(exprs.b6ab)[i]," ")[[1]][1]
+}
+# transform data with asinh()
+exprs.b6ab <- asinh(exprs.b6ab)
+
+```
+
+### Binplots visualizing MFI+ of CD27 for T-cells from blood samples
+
+The range of parameter X (CD90) and parameter Y (CD44) on x and y axis, respectively, is categorized into bins of size 0.2 x 0.2. For the cells in each bin, different statistical methods can be calculated and plotted into a color-coded manner. In this study we used the mean fluorescence intensity of parameter Z+ cells (MFI+) as third feature in the binplots, that we call triplots as we display information for three different markers. Moreover, the bins are divided into four quadrants using thresholds for CD90 and CD44. 
+
+All parameters were included in the analysis and bins with less than 10 cells were excluded. This minimum count of cells was used to balance the impact of identifying comparatively rare subpopulations while retaining statistical power. 
+
+
+```{r binplot 1}
+### INITIATING PARAMETERS
+featX = "CD90"
+featY = "CD44"
+featZ1 = "CD27"
+cutoffs.man = c(6,4,2)
+binSize = 0.2
+
+### PLOTTING PARAMETERS FOR TWO PLOTS
+par(mfrow = c(1,2),
+    cex.lab = 1.4, cex.axis = 1.4,
+    mgp = c(2.0, 0, 0),
+    mar = c(2.4,2,2.5,0),
+    oma = c(1,1,1,1))
+
+### CALL PLOT FUNCTIONS
+fcs$binplot_table(
+  data = exprs.untr, 
+  feat.X = featX, 
+  feat.Y = featY, 
+  feat.Z1 = featZ1, 
+  calc = "MFI+",
+  binsize = binSize,
+  cutoffs = cutoffs.man,
+  plot.range=c(0.05,12,0.05,12)
+)
+
+fcs$binplot_table(
+  data = exprs.b6ab, 
+  feat.X = featX, 
+  feat.Y = featY, 
+  feat.Z1 = featZ1, 
+  calc = "MFI+",
+  binsize = binSize,
+  cutoffs = cutoffs.man,
+  plot.range=c(0.05,12,0.05,12)
+)
+```
+
+### Binplots for cell characterisation in treated blood sample using T.bet and Foxp3
+
+To further characterize the cell subpopulations in the treated example we additionally analyzed triplots using T.bet (left figure) and Foxp3 (right figure) respectively as Z-parameter.
+
+```{r binplot 2}
+
+### PLOTTING PARAMETERS FOR TWO PLOTS
+par(mfrow = c(1,2),
+    cex.lab = 1.4, cex.axis = 1.4,
+    mgp = c(2.0, 0, 0),
+    mar = c(2.4,2,2.5,0),
+    oma = c(1,1,1,1))
+
+### CALL PLOT FUNCTIONS
+fcs$binplot_table(
+  data = exprs.b6ab, 
+  feat.X = featX, 
+  feat.Y = featY, 
+  feat.Z1 = "T.bet", 
+  calc = "MFI+",
+  binsize = binSize,
+  cutoffs = c(6,4,0.4),
+  plot.range=c(0.05,12,0.05,12)
+)
+
+fcs$binplot_table(
+  data = exprs.b6ab, 
+  feat.X = featX, 
+  feat.Y = featY, 
+  feat.Z1 = "Foxp3", 
+  calc = "MFI+",
+  binsize = binSize,
+  cutoffs = c(6,4,0),
+  plot.range=c(0.05,12,0.05,12)
+)
+```
