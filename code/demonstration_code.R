@@ -9,11 +9,11 @@ fcs = new.env()
 library(flowCore)
 
 # ! change path accoring to your own folder structure
-source("/Users/ines/Documents/DRFZ/Front_Immu/Sourcecode/YH_binplot_functions.R")
+source("/Users/ines/Documents/DRFZ/Front_Immu/PRI-demonstration/code/YH_binplot_functions.R")
 
 # Data Import
 # ! change path accoring to your own folder structure
-path.folder <- file.path("/Users/ines/Documents/DRFZ/Front_Immu/")
+path.folder <- "/Users/ines/Documents/DRFZ/Front_Immu/PRI-demonstration/data/"
 file.untr <- "CD4_TIN_BLD1_Untreated_Day3.fcs"
 
 ####### UNTREATED SAMPLE - used for binplot with 3 parameters
