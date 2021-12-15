@@ -28,7 +28,7 @@ We operated on [R version 3.6.1](http://www.r-project.org) running under Windows
 rm(list = ls())
 fcs = new.env()
 library(flowCore)
-source("/Users/ines/Documents/DRFZ/Front_Immu/Sourcecode/YH_binplot_functions.R")
+source("/Users/ines/Documents/DRFZ/Front_Immu/PRI-demonstration/code/YH_binplot_functions.R")
 #source("H:/Frontiers_Immunology/Sourcecode/YH_binplot_functions.R")
 ```
 
@@ -41,7 +41,7 @@ Cells were transformed with inverse hyperbolic sine (asinh), which is a common t
 
 ```{r dataimport}
 #path.folder <- file.path("H:", "Frontiers_Immunology")
-path.folder <- file.path("/Users/ines/Documents/DRFZ/Front_Immu")
+path.folder <- "/Users/ines/Documents/DRFZ/Front_Immu/PRI-demonstration/data/"
 file.untr <- "CD4_TIN_BLD1_Untreated_Day3.fcs"
 
 ####### UNTREATED SAMPLE - used for binplot with 3 parameters
