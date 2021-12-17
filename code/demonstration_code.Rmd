@@ -54,6 +54,7 @@ The data is then transformed with inverse hyperbolic sine (asinh). This is a com
 
 ```{r data prep}
 
+####### READ IN UNTREATED SAMPLE 
 path.folder <- "../data/"
 file.untr <- "CD4_TIN_BLD1_Untreated_Day3.fcs"
 data.untr <- read.FCS(file=file.path(path.folder,file.untr),which.lines=1)
@@ -126,7 +127,7 @@ Since we already prepared and loaded the untreated, we only need to load and pre
 
 ```{r dataimport}
 
-####### UNTREATED SAMPLE - used for binplot with 3 parameters
+####### READ IN TREATED SAMPLE 
 file.b6ab <- "CD4_TIN_BLD2_B6Antibodies_Day3.fcs"
 data.b6ab <- read.FCS(file=file.path(path.folder,file.b6ab),which.lines=1)
 keys.b6ab <- keyword(data.b6ab)

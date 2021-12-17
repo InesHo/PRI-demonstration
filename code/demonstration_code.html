@@ -241,11 +241,12 @@ source(&quot;../code/YH_binplot_functions.R&quot;)</code></pre>
 </div>
 <div id="general-example-for-usage-of-pri" class="section level2">
 <h2>1 General Example for Usage of PRI</h2>
-<p>This first section in the tutorial demonstrates the general steps of data preparation and visualisation using the example of a single file and the creation of a binplot. We use the file “CD4_TIN_BLD1_Untreated_Day3.fcs”</p>
+<p>This first section in the tutorial demonstrates briefly the general steps of data preparation and visualisation using the example of a single file and the creation of a binplot. We use the file “CD4_TIN_BLD1_Untreated_Day3.fcs”</p>
 <div id="data-preparation" class="section level3">
 <h3>1.1 Data Preparation</h3>
 <p>We read in the file using ‘flowCore’ and map aliases of the markers we are interested in to the channel names to use them as column names in the data frame we create for the raw data. The data is then transformed with inverse hyperbolic sine (asinh). This is a common transformation method for flow cytometry data (<a href="https://link.springer.com/article/10.1186/1471-2105-11-546">Finak et. al., 2010</a>).</p>
-<pre class="r"><code>path.folder &lt;- &quot;../data/&quot;
+<pre class="r"><code>####### READ IN UNTREATED SAMPLE 
+path.folder &lt;- &quot;../data/&quot;
 file.untr &lt;- &quot;CD4_TIN_BLD1_Untreated_Day3.fcs&quot;
 data.untr &lt;- read.FCS(file=file.path(path.folder,file.untr),which.lines=1)
 keys.untr &lt;- keyword(data.untr)
@@ -302,7 +303,7 @@ fcs$binplot_table(
 <h3>2.1 Data Preparation</h3>
 <p>The files used in this demonstration represent blood cells taken on day three of the experiment. We here again use the file “CD4_TIN_BLD1_Untreated_Day3.fcs” is an untreated sample. After preprocession of the raw data file 44083 cells remain. We additionally use the file “CD4_TIN_BLD2_B6Antibodies_Day3.fcs” as an effectily treated example. It has 22679 cells after preprocession.</p>
 <p>Since we already prepared and loaded the untreated, we only need to load and prepare the treated example at this point. This is done in the some way as it was done in 1.1 for the untreated file. The expression data is also transformed using the inverse hyperbolic sine (asinh).</p>
-<pre class="r"><code>####### UNTREATED SAMPLE - used for binplot with 3 parameters
+<pre class="r"><code>####### READ IN TREATED SAMPLE 
 file.b6ab &lt;- &quot;CD4_TIN_BLD2_B6Antibodies_Day3.fcs&quot;
 data.b6ab &lt;- read.FCS(file=file.path(path.folder,file.b6ab),which.lines=1)
 keys.b6ab &lt;- keyword(data.b6ab)
