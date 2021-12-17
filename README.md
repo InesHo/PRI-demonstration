@@ -1,6 +1,6 @@
 # PRI-demonstration
 
-The purpose of this repo is to serve as a breif demonstration and tutorial for PRI - Pattern Recognition of Immune Cells. This is a novel approach in analyszing and visualizing mass flow cytometry data developed in our group (https://www.drfz.de/en/forschung/pb1/ag/signaltransduktion/).
+The purpose of this repo is to serve as a brief demonstration and tutorial for PRI - Pattern Recognition of Immune Cells. This is a novel approach in analyszing and visualizing mass flow cytometry data developed in our group (https://www.drfz.de/en/forschung/pb1/ag/signaltransduktion/).
 
 Here we present a simplified excerpt from PRI to ensure simple, comprehensible use and demonstration of the core functionality. We do not include a database connection and the GUI application for data analysis here. 
 
@@ -8,9 +8,9 @@ PRI uses a bin-based apporach in plotting three marker combinations enabling us 
 
 ![plot](https://github.com/InesHo/PRI-demonstration/blob/main/images/general_example.png)
 
-After you installed flowCore (see below) you can follow this Link to get to the demonstration: http://htmlpreview.github.io/?https://github.com/InesHo/Pri-demonstration/blob/master/code/demonstration_code.html
+After you installed flowCore (see below) you can follow this link to get to the demonstration: http://htmlpreview.github.io/?https://github.com/InesHo/Pri-demonstration/blob/master/code/demonstration_code.html
 
-To run this code in R you additionally need to install the flowCore package using via BiocManager. This can be done b running the following code in your R-Terminal:
+To run this code you need to install the flowCore package via BiocManager. This can be done by running the following code in your R-Terminal:
 ```
  if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
