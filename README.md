@@ -8,6 +8,8 @@ PRI uses a bin-based apporach in plotting three marker combinations enabling us 
 
 ![plot](https://github.com/InesHo/PRI-demonstration/blob/main/images/general_example.png)
 
+
+
 ### Prerequisites
 We use the library 'flowCore' v1.52.1 to read the FCS-FIles. If this library is not yet installed, it can be done via [BioConductor](https://www.bioconductor.org/packages/release/bioc/html/flowCore.html) in the ***R terminal***. This must be done before you can use the code examples from this tutorial. 
 To do so run the following code in your ***R terminal***:
@@ -31,3 +33,9 @@ Rscript 'example/example.R'
 ```
 
 to create the result plots as there are presented in the [demonstration code](http://htmlpreview.github.io/?https://github.com/InesHo/Pri-demonstration/blob/master/code/demonstration_code.html). 
+
+
+
+### Publications featuring PRI
+- Gryzik, S., Hoang, Y., Lischke, T., Mohr, E., Venzke, M., Kadner, I., Poetzsch, J., Groth, D., Radbruch, A., Hutloff, A., & Baumgrass, R. (2020). Identification of a super-functional Tfh-like subpopulation in murine lupus by pattern perception. eLife, 9, e53226. https://doi.org/10.7554/eLife.53226
+
