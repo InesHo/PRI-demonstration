@@ -6,16 +6,10 @@
 ##################################################n
 #################################
 
-# install flowCore libar if not done yet
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-BiocManager::install("flowCore")
-
 # Load flowCore library and source PRI functions 
 rm(list = ls())
-fcs = new.env()
 library(flowCore)
-source("../code/YH_binplot_functions.R")
+source("../code/binplot.R")
 
 ### 1 process data and create plots for general PRI example
 ## 1.1 Data preparation
@@ -47,14 +41,14 @@ cutoffs.man = c(6,4,2)
 binSize = 0.2
 
 # PLOTTING PARAMETERS 
+png("../images/general_example.png")
 par(mfrow = c(1,1),
     cex.lab = 1.4, cex.axis = 1.4,
     pin = c(4,4),
     mgp = c(2.0, 0, 0))
 
 # CALL PLOT FUNCTIONS
-png("../images/general_example.png")
-fcs$binplot_table(
+binplot_table(
   data = exprs.untr, 
   feat.X = featX, 
   feat.Y = featY, 
@@ -106,7 +100,7 @@ par(mfrow = c(1,2),
     oma = c(1,1,1,1))
 
 # CALL PLOT FUNCTIONS
-fcs$binplot_table(
+binplot_table(
   data = exprs.untr, 
   feat.X = featX, 
   feat.Y = featY, 
@@ -117,7 +111,7 @@ fcs$binplot_table(
   plot.range=c(0.05,12,0.05,12)
 )
 
-fcs$binplot_table(
+binplot_table(
   data = exprs.b6ab, 
   feat.X = featX, 
   feat.Y = featY, 
@@ -139,7 +133,7 @@ par(mfrow = c(1,2),
     oma = c(1,1,1,1))
 
 # CALL PLOT FUNCTIONS
-fcs$binplot_table(
+binplot_table(
   data = exprs.b6ab, 
   feat.X = featX, 
   feat.Y = featY, 
@@ -150,7 +144,7 @@ fcs$binplot_table(
   plot.range=c(0.05,12,0.05,12)
 )
 
-fcs$binplot_table(
+binplot_table(
   data = exprs.b6ab, 
   feat.X = featX, 
   feat.Y = featY, 

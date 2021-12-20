@@ -37,9 +37,9 @@ BiocManager::install("flowCore")
 When 'flowCore' is installed, we load the library and create an R environment for the demonstration of PRI functionalities.
 ```{r load library}
 rm(list = ls())
-fcs = new.env()
+
 library(flowCore)
-source("../code/YH_binplot_functions.R")
+source("../code/binplot.R")
 ```
 
 
@@ -54,7 +54,7 @@ The data is then transformed with inverse hyperbolic sine (asinh). This is a com
 
 ```{r data prep}
 
-####### READ IN UNTREATED SAMPLE 
+####### READ IN TREATED SAMPLE 
 path.folder <- "../data/"
 file.untr <- "CD4_TIN_BLD1_Untreated_Day3.fcs"
 data.untr <- read.FCS(file=file.path(path.folder,file.untr),which.lines=1)
@@ -101,7 +101,7 @@ par(mfrow = c(1,1),
     mgp = c(2.0, 0, 0))
 
 ### CALL PLOT FUNCTIONS
-fcs$binplot_table(
+binplot_table(
   data = exprs.untr, 
   feat.X = featX, 
   feat.Y = featY, 
@@ -170,7 +170,7 @@ par(mfrow = c(1,2),
     oma = c(1,1,1,1))
 
 ### CALL PLOT FUNCTIONS
-fcs$binplot_table(
+binplot_table(
   data = exprs.untr, 
   feat.X = featX, 
   feat.Y = featY, 
@@ -181,7 +181,7 @@ fcs$binplot_table(
   plot.range=c(0.05,12,0.05,12)
 )
 
-fcs$binplot_table(
+binplot_table(
   data = exprs.b6ab, 
   feat.X = featX, 
   feat.Y = featY, 
@@ -207,7 +207,7 @@ par(mfrow = c(1,2),
     oma = c(1,1,1,1))
 
 ### CALL PLOT FUNCTIONS
-fcs$binplot_table(
+binplot_table(
   data = exprs.b6ab, 
   feat.X = featX, 
   feat.Y = featY, 
@@ -218,7 +218,7 @@ fcs$binplot_table(
   plot.range=c(0.05,12,0.05,12)
 )
 
-fcs$binplot_table(
+binplot_table(
   data = exprs.b6ab, 
   feat.X = featX, 
   feat.Y = featY, 
