@@ -37,7 +37,7 @@ cd PRI-demonstration
 Rscript 'example/example.R'
 ```
 
-to create the result plots as they are presented in the [demonstration code](http://htmlpreview.github.io/?https://github.com/InesHo/Pri-demonstration/blob/master/code/demonstration_code.html). 
+This creates the result plots as they are presented in the [demonstration code](http://htmlpreview.github.io/?https://github.com/InesHo/Pri-demonstration/blob/master/code/demonstration_code.html). 
 
 
 
