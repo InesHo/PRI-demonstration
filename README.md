@@ -2,7 +2,7 @@
 
 The purpose of this tutorial is to serve as a brief demonstration for ***PRI - Pattern Recognition of Immune Cells***. This is a novel approach in analysing and visualizing mass flow cytometry data developed in the research group [Baumgrass of the German Rheumatism Research Centre Berlin (DRFZ)](https://www.drfz.de/en/forschung/pb1/ag/signaltransduktion/).
 
-Here we present a simplified excerpt from PRI to ensure comprehensible use and demonstration of the core functionality. We do not include database connection and GUI application for data analysis. 
+Here we present a simplified excerpt from PRI to ensure comprehensible use and demonstration of the core functionality. 
 
 PRI uses a bin-based apporach in plotting three marker combinations enabling the user to recognize activation patterns in the underlying data. We call these plots ***binplots***. In a binplot, the area of the markers X versus Y is categorized into bins of size 0.2 x 0.2. By binning, there are always several cells combined into one bin for which certain metrics can calculated. Using this approach, it is possible to visualize a third parameter in these plots. This third feature can depict a variety of options, for example the cell density or a statistical measure calculated for a third marker, referred to as marker Z. 
 
