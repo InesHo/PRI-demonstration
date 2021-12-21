@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The two files we use in this tutorial are part of a re-analysis perfomed for 13 blood samples using PRI. These samples were taken from a publicly available dataset and can be downloaded from [Cytobank](https://www.cytobank.org/nolanlab/reports/Spitzer2017.html). Compensation, elimination of doublets and dead cells was done in [FlowJo](http://flowjo.com), as well as gating on CD4<sup>+</sup> T cells resulting in the files as they are provided in the 'data' folder.
 
-For comparability of the re-analysis results with the original results we used a gating strategy similar to the in the study from [Spitzer et. al., 2017](https://www.sciencedirect.com/science/article/pii/S009286741631738X?via%3Dihub) we aim to compare our results with. 
+For comparability of the re-analysis results with the original results we used a gating strategy similar to that in the [study](https://www.sciencedirect.com/science/article/pii/S009286741631738X?via%3Dihub) we aim to compare our results with. 
 
 ## Example analysis with PRI - Pattern Recognition with Immune cells
 
@@ -23,7 +23,7 @@ We have selected two files to demonstrate how we create binplots using the PRI a
 
 ### Load library
 
-First, the 'flowCore' library is loaded and the file containing the PRI functions is sourced. If you did not install 'flowCore' yet please follow the instructions from the Readme. 
+First, the 'flowCore' library is loaded and the file containing the PRI functions is sourced. If you did not install 'flowCore' yet please follow the instructions given under prerequisites from [here](https://github.com/InesHo/PRI-demonstration).
 
 ```{r load library}
 library(flowCore)

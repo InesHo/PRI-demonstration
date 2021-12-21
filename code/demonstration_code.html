@@ -217,14 +217,14 @@ $(document).ready(function () {
 <div id="data-description" class="section level2">
 <h2>Data description</h2>
 <p>The two files we use in this tutorial are part of a re-analysis perfomed for 13 blood samples using PRI. These samples were taken from a publicly available dataset and can be downloaded from <a href="https://www.cytobank.org/nolanlab/reports/Spitzer2017.html">Cytobank</a>. Compensation, elimination of doublets and dead cells was done in <a href="http://flowjo.com">FlowJo</a>, as well as gating on CD4<sup>+</sup> T cells resulting in the files as they are provided in the ‘data’ folder.</p>
-<p>For comparability of the re-analysis results with the original results we used a gating strategy similar to the in the study from <a href="https://www.sciencedirect.com/science/article/pii/S009286741631738X?via%3Dihub">Spitzer et. al., 2017</a> we aim to compare our results with.</p>
+<p>For comparability of the re-analysis results with the original results we used a gating strategy similar to that in the <a href="https://www.sciencedirect.com/science/article/pii/S009286741631738X?via%3Dihub">study</a> we aim to compare our results with.</p>
 </div>
 <div id="example-analysis-with-pri---pattern-recognition-with-immune-cells" class="section level2">
 <h2>Example analysis with PRI - Pattern Recognition with Immune cells</h2>
 <p>We have selected two files to demonstrate how we create binplots using the PRI approach. We operated on <a href="http://www.r-project.org">R version 3.6.1</a> running under Windows 10 (64-bit). Help and plot functions use R core functionalities. These functions are accumulated in ‘binplot.R’.</p>
 <div id="load-library" class="section level3">
 <h3>Load library</h3>
-<p>First, the ‘flowCore’ library is loaded and the file containing the PRI functions is sourced. If you did not install ‘flowCore’ yet please follow the instructions from the Readme.</p>
+<p>First, the ‘flowCore’ library is loaded and the file containing the PRI functions is sourced. If you did not install ‘flowCore’ yet please follow the instructions given under prerequisites from <a href="https://github.com/InesHo/PRI-demonstration">here</a>.</p>
 <pre class="r"><code>library(flowCore)
 source(&quot;../code/binplot.R&quot;)</code></pre>
 </div>
