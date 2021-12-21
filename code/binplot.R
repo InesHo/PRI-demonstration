@@ -3,7 +3,7 @@
 # German Rheumatism Research Center (DRFZ) Berlin - 2019
 
 
-
+rm(list = ls())
 fcs = new.env()
 
 

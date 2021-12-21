@@ -21,23 +21,10 @@ We have selected two files to demonstrate how we create binplots using the PRI a
 
 We operated on [R version 3.6.1](http://www.r-project.org) running under Windows 10 (64-bit). Help and plot functions use R core functionalities. These functions are accumulated in ‘YH_binplot_functions.R’. 
 
-
-### Install library
-
-We use the library 'flowCore' v1.52.1 to read the FCS-FIles. If this library is not yet installed, it can be done via [BioConductor](https://www.bioconductor.org/packages/release/bioc/html/flowCore.html) in the R terminal before running the remainder of code in this tutorial. 
-```{r install library, echo=T, warning=F, message=F}
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-
-BiocManager::install("flowCore")
-```
-
 ### Load library
 
 When 'flowCore' is installed, we load the library and create an R environment for the demonstration of PRI functionalities.
 ```{r load library}
-rm(list = ls())
-
 library(flowCore)
 source("../code/binplot.R")
 ```

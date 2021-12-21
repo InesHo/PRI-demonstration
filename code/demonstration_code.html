@@ -222,20 +222,10 @@ $(document).ready(function () {
 <h2>Example analysis with PRI - Pattern Recognition with Immune cells</h2>
 <p>We have selected two files to demonstrate how we create binplots using the PRI approach. If the functions are to be used for other marker combinations or data sets, only the input parameters have to be adjusted accordingly and carefully.</p>
 <p>We operated on <a href="http://www.r-project.org">R version 3.6.1</a> running under Windows 10 (64-bit). Help and plot functions use R core functionalities. These functions are accumulated in ‘YH_binplot_functions.R’.</p>
-<div id="install-library" class="section level3">
-<h3>Install library</h3>
-<p>We use the library ‘flowCore’ v1.52.1 to read the FCS-FIles. If this library is not yet installed, it can be done via <a href="https://www.bioconductor.org/packages/release/bioc/html/flowCore.html">BioConductor</a> in the R terminal before running the remainder of code in this tutorial.</p>
-<pre class="r"><code>if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
-    install.packages(&quot;BiocManager&quot;)
-
-BiocManager::install(&quot;flowCore&quot;)</code></pre>
-</div>
 <div id="load-library" class="section level3">
 <h3>Load library</h3>
 <p>When ‘flowCore’ is installed, we load the library and create an R environment for the demonstration of PRI functionalities.</p>
-<pre class="r"><code>rm(list = ls())
-
-library(flowCore)
+<pre class="r"><code>library(flowCore)
 source(&quot;../code/binplot.R&quot;)</code></pre>
 </div>
 </div>
