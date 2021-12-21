@@ -21,14 +21,19 @@ To do so run the following code in your ***R terminal***:
 BiocManager::install("flowCore")
 ```
 
-After you installed 'flowCore' you can either follow this link to get to the [demonstration](http://htmlpreview.github.io/?https://github.com/InesHo/Pri-demonstration/blob/master/code/demonstration_code.html) or you can source a simple R file from your ***systems terminal*** that recreates the plots from the demonstration code and saves them in the 'images' folder. To do so open a terminal window and use the cd (change directory) commandline tool to change to the 'PRI-demonstration' directory.
+After you installed 'flowCore' you can either follow this link to get to the [demonstration](http://htmlpreview.github.io/?https://github.com/InesHo/Pri-demonstration/blob/master/code/demonstration_code.html) or you can source a simple R file from your ***systems terminal*** that recreates the plots from the demonstration code and saves them in the 'images' folder. 
+
+Start by opening a terminal window and use the cd (change directory) commandline tool to navigate to the location where you want to save the files for this tutorial. Then clone the repository using 'git clone' . 
 
 ```
-cd [path to PRI-demonstration]
+cd [path to destination for PRI-demonstration]
+git clone https://github.com/InesHo/PRI-demonstration.git
 ```
 
-From this folder, please execute the command
+Change into the 'PRI-demonstration' folder and execute the R-script.
+
 ```
+cd PRI-demonstration
 Rscript 'example/example.R'
 ```
 
