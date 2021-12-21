@@ -21,7 +21,7 @@ To do so run the following code in your ***R terminal***:
 BiocManager::install("flowCore")
 ```
 
-After you installed 'flowCore' you can either follow this link to get to the [demonstration](http://htmlpreview.github.io/?https://github.com/InesHo/Pri-demonstration/blob/master/code/demonstration_code.html) or you can source a simple R file from your ***systems terminal*** that recreates the plots from the demonstration code and saves them in the 'images' folder. 
+After you installed 'flowCore' you can either follow this [link to the demonstration](http://htmlpreview.github.io/?https://github.com/InesHo/Pri-demonstration/blob/master/code/demonstration_code.html) or you can source a simple R file from your ***systems terminal*** that recreates the plots from the demonstration code and saves them in the 'images' folder. 
 
 Start by opening a terminal window and use the cd (change directory) commandline tool to navigate to the location where you want to save the files for this tutorial. Then clone the repository using 'git clone' . 
 
@@ -43,5 +43,5 @@ This creates the result plots as they are presented in the [demonstration code](
 
 ### Publications featuring PRI
 - Gryzik, S., Hoang, Y., Lischke, T., Mohr, E., Venzke, M., Kadner, I., Poetzsch, J., Groth, D., Radbruch, A., Hutloff, A., & Baumgrass, R. (2020). Identification of a super-functional Tfh-like subpopulation in murine lupus by pattern perception. eLife, 9, e53226. https://doi.org/10.7554/eLife.53226
-- tbc
+- tbc ...
 
