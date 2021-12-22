@@ -4,7 +4,7 @@ The purpose of this tutorial is to serve as a brief demonstration for ***PRI - P
 
 Here we present a simplified excerpt from PRI to ensure comprehensible use and demonstration of the core functionality. 
 
-PRI uses a bin-based apporach in plotting three marker combinations enabling the user to recognize activation patterns in the underlying data. We call these plots ***binplots***. In a binplot, the area of the markers X versus Y is categorized into bins of size 0.2 x 0.2. By binning, there are always several cells combined into one bin for which certain metrics can calculated. Using this approach, it is possible to visualize a third parameter in these plots. This third feature can depict a variety of options, for example the cell density or a statistical measure calculated for a third marker, referred to as marker Z. 
+PRI uses a bin-based approach in plotting three marker combinations enabling the user to recognize activation patterns in the underlying data. We call these plots ***binplots***. In a binplot, the area of the markers X versus Y is categorized into bins of size 0.2 x 0.2. By binning, there are always several cells combined into one bin for which certain metrics can calculated. Using this approach, it is possible to visualize a third parameter in these plots. This third feature can depict a variety of options, for example the cell density or a statistical measure calculated for a third marker, referred to as marker Z. 
 
 ![plot](https://github.com/InesHo/PRI-demonstration/blob/main/images/general_example.png)
 
