@@ -1,7 +1,8 @@
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
-BiocManager::install("flowCore")
+if (!requireNamespace("flowCore", quietly = TRUE))
+    BiocManager::install("flowCore")
 
 # Set path to working directory.This is were the repository will be stored
 # sets Users home directory to working directory 
