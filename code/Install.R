@@ -15,7 +15,7 @@ download.file(URL, destfile = "PRI-demo.zip")
 # unzip file
 unzip(zipfile = "~/PRI-demo.zip")
 
-setwd("~/PRI-demonstration-main")
+setwd("~/PRI-demonstration-main/code")
 
 cat("\nThe PRI repository folder 'PRI-demonstration-main' is stored in your home folder and now set as the current working directory.\n\n")
 cat("You can now follow the tutorial under\n\n http://htmlpreview.github.io/?https://github.com/InesHo/Pri-demonstration/blob/master/code/demonstration_code.html \n\nto use PRI.")
