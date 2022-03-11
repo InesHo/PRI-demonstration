@@ -9,13 +9,13 @@
 # Load flowCore library and source PRI functions 
 rm(list = ls())
 library(flowCore)
-source("../code/binplot.R")
+source("code/binplot.R")
 
 ### 1 process data and create plots for general PRI example
 ## 1.1 Data preparation
 
 # READ IN UNTREATED SAMPLE 
-path.folder <- "../data/"
+path.folder <- "data/"
 file.untr <- "CD4_TIN_BLD1_Untreated_Day3.fcs"
 data.untr <- read.FCS(file=file.path(path.folder,file.untr),which.lines=1)
 keys.untr <- keyword(data.untr)
@@ -41,7 +41,7 @@ cutoffs.man = c(6,4,2)
 binSize = 0.2
 
 # PLOTTING PARAMETERS 
-png("../images/general_example.png")
+png("images/general_example.png")
 par(mfrow = c(1,1),
     cex.lab = 1.4, cex.axis = 1.4,
     pin = c(4,4),
@@ -92,7 +92,7 @@ binSize = 0.2
 
 
 # PLOTTING PARAMETERS FOR TWO PLOTS
-png("../images/triplot_CD27.png")
+png("images/triplot_CD27.png")
 par(mfrow = c(1,2),
     cex.lab = 1.4, cex.axis = 1.4,
     mgp = c(2.0, 0, 0),
@@ -125,7 +125,7 @@ dev.off()
 
 ## 2.3   Binplots For Cell Characterisation in Treated Blood Sample using T.bet and Foxp3
 # PLOTTING PARAMETERS FOR TWO PLOTS
-png("../images/triplot_Tbet_Foxp3.png")
+png("images/triplot_Tbet_Foxp3.png")
 par(mfrow = c(1,2),
     cex.lab = 1.4, cex.axis = 1.4,
     mgp = c(2.0, 0, 0),
