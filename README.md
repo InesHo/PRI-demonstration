@@ -75,3 +75,7 @@ Rscript 'example/example.R'
 ```
 
 This creates the result plots as they are presented in the [demonstration code](http://htmlpreview.github.io/?https://github.com/InesHo/Pri-demonstration/blob/master/code/demonstration_code.html). 
+
+
+### Experiencing problems during usage or installation?
+Please do not hesitate to open an issue. We will try to help!
